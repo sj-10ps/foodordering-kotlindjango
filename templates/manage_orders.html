@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourCanteen - Delete Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 40px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>YourCanteen</h1>
+
+
+
+       <h2>Requested Orders</h2>
+
+
+    
+    <table>
+        <thead>
+            <tr>
+                <th>user name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>item name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example row -->
+             {%for i in approved%}
+            <tr>
+                <td>{{i.user.firstname}}</td>
+                <td>{{i.user.email}}</td>
+                <td><img src="{{ i.item.image.url }}" style="height: 200px;width: 200px;"></td>
+                <td>{{i.item.Price}}</td>
+                <td>{{i.item.title}}</td>
+                <form method="POST">
+                    {%csrf_token%}
+                    <input type="hidden" name="order_id" value="{{i.id}}">
+                <td><select name="choice" id="">
+                    <option value="reject">Reject</option>
+                   
+                    <option value="delivered">Delivered</option>
+                </select>
+            <input type="submit" value="submit">   
+            </td>
+               
+            </tr>
+             </form>
+            {%endfor%}
+            <!-- Add more rows dynamically or manually -->
+        </tbody>      
+    </table>
+
+
+
+       <h2>delivered Orders</h2>
+
+
+    
+    <table>
+        <thead>
+            <tr>
+                <th>user name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>item name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example row -->
+             {%for i in delivered%}
+            <tr>
+                <td>{{i.user.firstname}}</td>
+                <td>{{i.user.email}}</td>
+                <td><img src="{{ i.item.image.url }}" style="height: 200px;width: 200px;"></td>
+                <td>{{i.item.Price}}</td>
+                <td>{{i.item.title}}</td>
+              </tr>
+            {%endfor%}
+            <!-- Add more rows dynamically or manually -->
+        </tbody>      
+    </table>
+
+</body>
+</html>

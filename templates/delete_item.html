@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourCanteen - Delete Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 40px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>YourCanteen</h1>
+    <h2>Delete Items</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example row -->
+             {%for i in items%}
+            <tr>
+                <td>{{i.title}}</td>
+                <td>{{i.Description}}</td>
+                <td><img src="{{ i.image.url }}" style="height: 200px;width: 200px;"></td>
+                <td>{{i.Price}}</td>
+                <td>{{i.category}}</td>
+                <td><a href="{%url 'delete' i.id %}"><button>Delete</button></a></td>
+            </tr>
+            {%endfor%}
+            <!-- Add more rows dynamically or manually -->
+        </tbody>      
+    </table>
+
+</body>
+</html>
