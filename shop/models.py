@@ -1,4 +1,5 @@
-from django.db import models
+from django.db import models\
+from cloudinary.models import CloudinaryField
 
 # Create your models here
 class items(models.Model):
@@ -9,7 +10,7 @@ class items(models.Model):
         ('snack','Snacks')
     ]
 
-    image=models.ImageField(upload_to="items/")
+    image = CloudinaryField('image')
     title=models.CharField(max_length=100)
     description=models.TextField()
     Price=models.IntegerField()
