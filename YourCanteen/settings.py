@@ -76,15 +76,9 @@ WSGI_APPLICATION = 'YourCanteen.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'yourcanteen',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',  # default port for PostgreSQL
-    }
+    'default': dj_database_url.config(default='postgres://localhost:5432')
 }
 
 
